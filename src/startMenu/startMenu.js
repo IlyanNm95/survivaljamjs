@@ -10,11 +10,20 @@ const showStartMenu = () => {
     }
 }
 
+
+
+//#region // * Different start menu state region
+
+
+
 const runLoadingStartMenuState = () => {
     updateLogoIndexAnimation();
     showBackgroundGalaxy();
     showLogo();
+    showLoadingBarState();
 }
+
+
 
 const runNormalStartMenuState = () => {
     updatePositionLogo([0, -270]);
@@ -23,6 +32,40 @@ const runNormalStartMenuState = () => {
     showChoiceStartMenu();
     showLanguageStartMenu();
     showLogo(logoOffSet);
+}
+
+
+
+//#endregion
+
+const showLoadingBarState = () => {
+    /**
+     * * This function is the reason why using totalLoadCounter variable is usefull, i just take the total length of the ressource to load
+     * * and then i just divide it to have the "%" of completion of the load, in that case, i can know which ressource is actually loading
+     * * cause i have type for every elements in the ressourceToLoad array, this function use the loading bar opacity, in that case
+     * * because the load assets function take 1000 ms to set the startMenu state to Normal, i can decrease the loadingBarOpacity int
+     * * So the loading bar disappear
+     */
+    if(totalLoadCounter >= ressourceToLoad.length )
+    {
+        loadingBarOpacity -= 5;
+    }
+    
+    let progression = totalLoadCounter / ressourceToLoad.length 
+    let xWidth = window.innerWidth /1.25;
+    let yHeight = xWidth / 40;
+    let xStart = window.innerWidth / 2 - xWidth / 2
+    let yStart = window.innerHeight - yHeight * 1.5
+
+    tint(255,loadingBarOpacity);
+    image(uiData[28].image, xStart, yStart, xWidth, yHeight)
+    image(uiData[30].image, xStart, yStart, xWidth*progression, yHeight)
+    image(uiData[29].image, xStart, yStart, xWidth, yHeight)
+    textAlign(CENTER, CENTER)
+    noTint();
+    fill(255,loadingBarOpacity)
+    text(totalLoadCounter + " / " + ressourceToLoad.length + " // Actually loading : " + ressourceToLoad[totalLoadCounter-1].typeOfRessource, xStart, yStart, xWidth, yHeight )
+    fill(255)
 }
 
 
@@ -82,45 +125,21 @@ const showChoiceStartMenu = () => {
 
 
 /**
- * @param {int} idBackground 
+ * @param {int} idBackground id of the background in the ui data
  */
 const showBackgroundGalaxy = (idBackground = 26) => {
     image(uiData[idBackground].image, 0, 0, windowWidth, windowHeight)
+    // applyBrightnessTemp(uiData[idBackground].image)
 }
 
 
 
 /**
- * @param {array[int]} offset 
+ * @param {array[int]} offset [x, y] this is the offset of the show logo func
  */
 const showLogo = (offset = [0, 0]) => {
     let xStart = windowWidth / 2 + offset[0];
     let yStart = windowHeight /4 - indexLogoStartMenu / 2 + offset[1];
     let size = windowHeight/2 + indexLogoStartMenu;
-    image(uiData[34].image, xStart - size/2, yStart, size, size) 
-}
-
-
-
-/**
- * * This will just update the index of the animation of the logo
- * @param {int} sizeToGo 
- */
-const updateLogoIndexAnimation = (sizeToGo = maxSizeOfTheLogo) => {
-
-    let vectorSize;
-    vectorSize = p5.Vector.lerp(createVector(indexLogoStartMenu, 0), createVector(sizeToGo, 0), 0.04); // interpolate the camera with the player by using vector.lerp by p5
-
-    indexLogoStartMenu = vectorSize.x;
-}
-
-
-/**
- * @param {array[float]} positionToGo this is the position that the logo will try to touch ([x , y])
- */
-const updatePositionLogo = (positionToGo = [0, 0]) => {
-    let vectorToGo;
-    vectorToGo = p5.Vector.lerp(createVector(logoOffSet[0], logoOffSet[1]), createVector(positionToGo[0], positionToGo[1]), 0.04); // interpolate the camera with the player by using vector.lerp by p5
-
-    logoOffSet = [vectorToGo.x, vectorToGo.y];
+    image(uiData[34].image, xStart - size/2, yStart, size, size) // TODO : Replace this rect with the logo
 }
