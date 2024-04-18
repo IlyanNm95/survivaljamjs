@@ -64,14 +64,6 @@ const nextIndexEntityTurn = () => {
     }
 }
 
-
-
-/**
- * @param {object} entity entity object 
- * @param {int} target target of the current map 
- * @param {int} selectedAbility selected ability index of the 'entity' obj 
- * ! Deprecated Method, this method use a time out and is no longer used
- */
 const useAbility = (entity, target = 1, selectedAbility = 0) => {
     if(entity.pa > 0)
     {
@@ -88,14 +80,6 @@ const useAbility = (entity, target = 1, selectedAbility = 0) => {
     }
 }
 
-
-
-/**
- * @param {int} x the start x of the zoning of where we can attack
- * @param {int} y the start y of the zoning of where we can attack
- * @param {int} attackPoint the number of attack point
- * @returns {array[array[int]]} returns an array of coords who are in an array [[x,y],[x,y+1],...]
- */
 const getAttackableCase = (x, y, attackPoint) => {
     canAttackCase = [[x, y]]
     for(let i = 1; i<attackPoint+1;i++)
@@ -135,13 +119,6 @@ const resetAttackableCase = () => {
     canAttackCase = []
 }
 
-
-
-/**
- * @param {int} x position x on the tilemap
- * @param {int} y position y on the tile map
- * @returns {boolean} true or false if it's an attackable case
- */
 const isAnAttackableCase = (x, y) => {
     for(let i = 0; i < canAttackCase.length; i++)
     {
@@ -153,17 +130,6 @@ const isAnAttackableCase = (x, y) => {
     return false
 }
 
-
-
-//#region // * Usefull function when we launch an attack
-
-
-/**
- * @param {object} entity the entity who attacks
- * @param {object} target the target object (entity)
- * @param {int} abilityIndex the selected ability of the attack
- * @returns {boolean} return if the attack can be launch or not
- */
 const launchAttack = (entity = actualMapEngineTwo.entityOnTactical[whichEntityTurn], target, abilityIndex = selectedAbility) => {
     if(entity.pa > 0){
 
@@ -186,41 +152,51 @@ const launchAttack = (entity = actualMapEngineTwo.entityOnTactical[whichEntityTu
     }
 }
 
-/**
- * @param {object} entity entity object 
- * @param {int} abilityIndex the ability index of the entity that it used 
- * @param {object} target target entity object
- */
 const attackWithTheCurrentAbility = (entity, abilityIndex, target) => {
-    switch(entity.abilities[abilityIndex].type)
-    {
-        case 'heal' :
+    // Probabilité que la compétence se retourne contre l'utilisateur (20% dans cet exemple)
+    const backfireProbability = 0.4;
+
+    // Génération d'un nombre aléatoire entre 0 et 1
+    const randomValue = Math.random();
+
+    switch(entity.abilities[abilityIndex].type) {
+        case 'heal':
             entity.state = "heal";
-            entity.pa --;
+            entity.pa--;
             setTimeout(() => {
-                target.health.actualHealth += entity.abilities[abilityIndex].baseAmount;
-                if(target.health.actualHealth >= target.health.maxHealth) target.health.actualHealth = target.health.maxHealth;
+                // Vérification si la compétence se retourne contre l'utilisateur
+                if (randomValue <= backfireProbability) {
+                    console.log("Your ability backfires!");
+                    // Appliquer des dégâts à l'utilisateur (à soi-même)
+                    entity.health.actualHealth -= 5; 
+                } else {
+                    // Appliquer le soin à la cible
+                    target.health.actualHealth += entity.abilities[abilityIndex].baseAmount;
+                    if (target.health.actualHealth >= target.health.maxHealth) target.health.actualHealth = target.health.maxHealth;
+                }
             }, 450);
             break;
-        default :
+        default:
             entity.state = "fight";
-            entity.pa --;
+            entity.pa--;
             setTimeout(() => {
-                target.health.actualHealth -= entity.abilities[abilityIndex].baseAmount;
+                // Vérification si la compétence se retourne contre l'utilisateur
+                if (randomValue <= backfireProbability && target !== entity && target.id !== 0) {
+                    console.log("Your ability backfires!");
+                    // Appliquer des dégâts à l'utilisateur (à soi-même)
+                    entity.health.actualHealth -= 5; // Remplacez someDamageValue par la quantité de dégâts infligés à votre propre entité
+                } else {
+                    // Appliquer les dégâts à la cible
+                    target.health.actualHealth -= entity.abilities[abilityIndex].baseAmount;
+                }
             }, 450);
-        break;
+            break;
     }
-} 
+}
 
-//#endregion
 
-/**
- * @returns {boolean} if all enemies are dead or not
- */
 const checkAllEnemiesDead = () => {
-    /**
-     * * Check if all enemies (so except id 0) are dead (and return true or false)
-     */
+   
     let count = 0;
     for(let i = 1; i < actualMapEngineTwo.entityOnTactical.length; i++)
     {
@@ -239,9 +215,6 @@ const checkAllEnemiesDead = () => {
     }
 }
 
-/**
- * @returns {boolean} if all allies are dead or not (in our case, we only have our player actually)
- */
 const checkAllAlliesDead = () => {
     if(playerTeam[0].health.actualHealth <= 0)
     {
