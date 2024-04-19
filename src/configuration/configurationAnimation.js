@@ -1,19 +1,3 @@
-/**
- * * When i launch a cinematic, i create a new object for base an animation of the animations list and then i run the animation
- * 
- * ? The order of the AnimationList :
- * * The order of an animation in the animations list represent the order of different animation that contain the spriteAnimate (in the array sprites)
- * * and the next position of him with his speed to go, the animation represents the animations fillied to the sprite
- * ? The sprite of the AnimationsList :
- * * The list of sprites contains these animations with their max counter of frames and the speed per frames, in that case, we can have some frames 
- * * speeder than the other. 
- * ? When does an animation end :
- * * An animation end when a sprite finish his animation
- * 
- * * /!\ The animation run procedurally, in first case, the first element of the order array will play and then the second and then the third...
- * * With this method i don't have really smooth animations but i have animations that works ! /!\ 
- */
-
 const AnimationsList =
 [
     {
