@@ -11,11 +11,6 @@ const showStartMenu = () => {
 }
 
 
-
-//#region // * Different start menu state region
-
-
-
 const runLoadingStartMenuState = () => {
     showBackgroundGalaxy();
     showLogo();
@@ -32,17 +27,8 @@ const runNormalStartMenuState = () => {
 }
 
 
-
-//#endregion
-
 const showLoadingBarState = () => {
-    /**
-     * * This function is the reason why using totalLoadCounter variable is usefull, i just take the total length of the ressource to load
-     * * and then i just divide it to have the "%" of completion of the load, in that case, i can know which ressource is actually loading
-     * * cause i have type for every elements in the ressourceToLoad array, this function use the loading bar opacity, in that case
-     * * because the load assets function take 1000 ms to set the startMenu state to Normal, i can decrease the loadingBarOpacity int
-     * * So the loading bar disappear
-     */
+
     if(totalLoadCounter >= ressourceToLoad.length )
     {
         loadingBarOpacity -= 5;
@@ -92,12 +78,7 @@ const showLanguageStartMenu = () => {
 
 
 const showChoiceStartMenu = () => {
-    /**
-     * * This function show differents choice we have in the startMenuChoices and it
-     * * also uses the callback when we click on the button, it also show use an hover effect
-     * * on the button, id 18 is the normal button without color and the 27 is the button with
-     * * the higlights on the border
-     */
+    
     let width = 250*2;
     let height = width/5;
     let xStart = window.innerWidth /2  - width / 2;
@@ -120,20 +101,11 @@ const showChoiceStartMenu = () => {
 }
 
 
-
-/**
- * @param {int} idBackground id of the background in the ui data
- */
 const showBackgroundGalaxy = (idBackground = 26) => {
     image(uiData[idBackground].image, 0, 0, windowWidth, windowHeight)
     // applyBrightnessTemp(uiData[idBackground].image)
 }
 
-
-
-/**
- * @param {array[int]} offset [x, y] this is the offset of the show logo func
- */
 const showLogo = (offset = [0, 0]) => {
     let xStart = windowWidth / 2 + offset[0];
     let yStart = windowHeight / 4 + offset[1];
@@ -143,9 +115,6 @@ const showLogo = (offset = [0, 0]) => {
     image(uiData[34].image, xStart - size / 2, yStart, size, size);
 }
 
-/**
- * @param {array[float]} positionToGo this is the position that the logo will try to touch ([x , y])
- */
 const updatePositionLogo = (positionToGo = [0, 0]) => {
     let vectorToGo;
     vectorToGo = p5.Vector.lerp(createVector(logoOffSet[0], logoOffSet[1]), createVector(positionToGo[0], positionToGo[1]), 0.04); // interpolate the camera with the player by using vector.lerp by p5
