@@ -1,0 +1,217 @@
+{
+    "data" : 
+    [
+        {
+            "id" : "0",
+            "path" : "assets/ui/fightUI/healthbar.png",
+            "image" : null
+        },
+        {
+            "id" : "1",
+            "path" : "assets/ui/ability/fightCardProto.png",
+            "image" : null
+        },
+        {
+            "id" : "2",
+            "path" : "assets/ui/fightUI/empty_healthbar.png",
+            "image" : null
+        },
+        {
+            "id" : "3",
+            "path" : "assets/ui/fightUI/background_healthbar.png",
+            "image" : null
+        },
+        {
+            "id" : "4",
+            "path" : "assets/ui/ability/healCardProto.png",
+            "image" : null
+        },
+        {
+            "id" : "5",
+            "path" : "assets/ui/ability/CaseBlue.png",
+            "image" : null
+        },
+        {
+            "id" : "6",
+            "path" : "assets/ui/ability/selectedAbility.png",
+            "image" : null
+        },
+        {
+            "id" : "7",
+            "path" : "assets/ui/playerPortrait.png",
+            "image" : null
+        },{
+            "id" : "8",
+            "path" : "assets/ui/roundCaseUi.png",
+            "image" : null
+        },{
+            "id" : "9",
+            "path" : "assets/ui/talkPopup.png",
+            "image" : null
+        },{
+            "id" : "10",
+            "path" : "assets/ui/popup.png",
+            "image" : null
+        },{
+            "id" : "11",
+            "path" : "assets/ui/dialogBox.png",
+            "image" : null
+        },{
+            "id" : "12",
+            "path" : "assets/ui/nextTurnButton.png",
+            "image" : null
+        },{
+            "id" : "13",
+            "path" : "assets/ui/fightUI/healthbarNormal.png",
+            "image" : null
+        },{
+            "id" : "14",
+            "path" : "assets/ui/fightUI/healthbarNormalFilled.png",
+            "image" : null
+        },{
+            "id" : "15",
+            "path" : "assets/ui/wallpaperTemp.png",
+            "image" : null
+        },{
+            "id" : "16",
+            "path" : "assets/ui/cadenas.png",
+            "image" : null
+        },{
+            "id" : "17",
+            "path" : "assets/ui/crossQuest.png",
+            "image" : null
+        },{
+            "id" : "18",
+            "path" : "assets/ui/CaseQuestPng.png",
+            "image" : null
+        },{
+            "id" : "19",
+            "path" : "assets/ui/QuestListUi.png",
+            "image" : null
+        },{
+            "id" : "20",
+            "path" : "assets/ui/dialogBoxColored.png",
+            "image" : null
+        },{
+            "id" : "21",
+            "path" : "assets/ui/Gradient.png",
+            "image" : null
+        },{
+            "id" : "22",
+            "path" : "assets/ui/PlanetsContainer.png",
+            "image" : null
+        },{
+            "id" : "23",
+            "path" : "assets/ui/BackgroundQuestList.png",
+            "image" : null
+        },{
+            "id" : "24",
+            "path" : "assets/ui/CaseQuit.png",
+            "image" : null
+        },{
+            "id" : "25",
+            "path" : "assets/ui/PlanetsContainerColored.png",
+            "image" : null
+        },{
+            "id" : "26",
+            "path" : "assets/background/spbg.png",
+            "image" : null
+        },{
+            "id" : "27",
+            "path" : "assets/ui/CaseQuestPngColored.png",
+            "image" : null
+        },{
+            "id" : "28",
+            "path" : "assets/ui/LoadingBar.png",
+            "image" : null
+        },{
+            "id" : "29",
+            "path" : "assets/ui/LoadingBarEmpty.png",
+            "image" : null
+        },{
+            "id" : "30",
+            "path" : "assets/ui/LoadingBarFull.png",
+            "image" : null
+        },{
+            "id" : "31",
+            "path" : "assets/background/backgroundTransitionMariage.png",
+            "image" : null
+        },{
+            "id" : "32",
+            "path" : "assets/background/backGroundFond.png",
+            "image" : null
+        },{
+            "id" : "33",
+            "path" : "assets/background/backgroundSalatonionPt.png",
+            "image" : null
+        },{
+            "id" : "34",
+            "path" : "assets/ui/logoXar.png",
+            "image" : null
+        },{
+            "id" : "35",
+            "path" : "assets/ui/borderUi.png",
+            "image" : null
+        },{
+            "id" : "36",
+            "path" : "assets/ui/borderUiEnemy.png",
+            "image" : null
+        },{
+            "id" : "37",
+            "path" : "assets/ui/key/keyUp.png",
+            "image" : null
+        },{
+            "id" : "38",
+            "path" : "assets/ui/key/keyDown.png",
+            "image" : null
+        },{
+            "id" : "39",
+            "path" : "assets/ui/nextTurnButtonHold.png",
+            "image" : null
+        },{
+            "id" : "40",
+            "path" : "assets/storyboard/storyboard1.png",
+            "image" : null
+        },{
+            "id" : "41",
+            "path" : "assets/storyboard/storyboard2.png",
+            "image" : null
+        },{
+            "id" : "42",
+            "path" : "assets/storyboard/storyboard3.png",
+            "image" : null
+        },{
+            "id" : "43",
+            "path" : "assets/storyboard/storyboard4.png",
+            "image" : null
+        },{
+            "id" : "44",
+            "path" : "assets/ui/caseNewInteraction.png",
+            "image" : null
+        },{
+            "id" : "45",
+            "path" : "assets/storyboard/storyboard5.png",
+            "image" : null
+        },{
+            "id" : "46",
+            "path" : "assets/ui/versusIcon.png",
+            "image" : null
+        },{
+            "id" : "47",
+            "path" : "assets/backgroundFight/backGroundFightSpaceShip.png",
+            "image" : null
+        },{
+            "id" : "48",
+            "path" : "assets/backgroundFight/backGroundFightDarkWoaf.png",
+            "image" : null
+        },{
+            "id" : "49",
+            "path" : "assets/ui/borderRect.png",
+            "image" : null
+        },{
+            "id" : "50",
+            "path" : "assets/ui/borderRectColored.png",
+            "image" : null
+        }
+    ]
+}

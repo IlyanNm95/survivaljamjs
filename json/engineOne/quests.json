@@ -1,0 +1,77 @@
+{
+    "data" : [
+        {
+            "id" : 0,
+            "name" : "Follow the blue entity",
+            "description" : "Follow the blue entity and talk to him to know more about you.",
+            "questType" : "talk",
+            "eventOnStart" : "goNextTutoStep",
+            "questGoal" : {"map" : 0, "position" : [3, 5]},
+            "idQuestProgression" : 3,
+            "currentProgression": 0,
+            "maxProgression" : 1,
+            "reward" : null
+        },
+        {
+            "id" : 1,
+            "name" : "Try to fight the grey entity",
+            "description" : "Interact with the grey AI to fight him.",
+            "questType" : "fight",
+            "eventOnStart" : "goFightTuto",
+            "questGoal" : {"map" : 0, "position" : [2, 6]},
+            "idQuestProgression" : 5,
+            "currentProgression": 0,
+            "maxProgression" : 1,
+            "reward" : null
+        },
+        {
+            "id" : 2,
+            "name" : "Go on the bob planet !",
+            "description" : "Use the exploration computer in front of the window",
+            "questType" : "fight",
+            "eventOnStart" : "goOnPlanetBob",
+            "eventOnEnd" : "finishFightQuestBob",
+            "questGoal" : {"map" : 2, "position" : [7, 13]},
+            "idQuestProgression" : 6,
+            "currentProgression": 0,
+            "maxProgression" : 1,
+            "reward" : null
+        },
+        {
+            "id" : 3,
+            "name" : "The end of the Bob arc",
+            "description" : "You helped bob, now go talk to him to know more.",
+            "questType" : "talk",
+            "eventOnStart" : null,
+            "questGoal" : {"map" : 2, "position" : [15, 17]},
+            "idQuestProgression" : 0,
+            "currentProgression": 0,
+            "maxProgression" : 1,
+            "reward" : null
+        },
+        {
+            "id" : 4,
+            "name" : "Save Baby Bob",
+            "description" : "We need to help baby bob, he is a prisoner of the terrible 'Salatonion'",
+            "questType" : "fight",
+            "eventOnStart" : "addNewAbility1",
+            "questGoal" : {"map" : 1, "position" : [15, 17]},
+            "idQuestProgression" : 3,
+            "currentProgression": 0,
+            "maxProgression" : 1,
+            "reward" : null
+        },
+        {
+            "id" : 5,
+            "name" : "Kill Dark Woaf",
+            "description" : "We don't have any solutions, we need to kill Dark Woaf if we wan't to save the world.",
+            "questType" : "fight",
+            "eventOnStart" : "addNewAbility2",
+            "questGoal" : {"map" : 3, "position" : [20, 9]},
+            "idQuestProgression" : 2,
+            "currentProgression": 0,
+            "maxProgression" : 1,
+            "reward" : null
+        }
+    ]
+}
