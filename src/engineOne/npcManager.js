@@ -1,16 +1,5 @@
-
-/**
- * @param {string} orientation string can be back or front, if it's not both of them, it will send an error
- * ! Method is Deprecated, now i use showSpecificNpcOnMap() in the for boucle when i display map
- */
 const displayAllNPCOnMap = (orientation = "back") => {
-  /**
-   * ? How it works ?
-   * * If the function is called with the parameter "back" the function just show the tile in back of the player
-   * * but if it's "front" it will show the tiles in front of the player so if i put the playerShow function
-   * * between these two functions, i will have illusion of depth
-   * ! DEPRECATED METHOD
-   */
+  
     switch(orientation){
         case "back":
             for(let i = 0; i < playerOnMap.npcOnMap.length; i++){
@@ -34,15 +23,8 @@ const displayAllNPCOnMap = (orientation = "back") => {
 }
 
 
-/**
- * @param {int} xPosition xPosition of the npc i want to show
- * @param {int} yPosition yPosition of the npc i want to show
- */
 const showSpecificNpcOnMap = (xPosition, yPosition) => {
-  /**
-   * * Get the npc on the current tile position, this function is good because i can show my npc like
-   * * there is a top down with depth and then display all the npc on the tile
-   */
+  
   let npcToDisplay = playerOnMap.npcOnMap.filter(npc => 
     Math.floor(npc.pos[0]) === xPosition && Math.floor(npc.pos[1]+1) === yPosition )
     if(npcToDisplay.length > 0)
@@ -75,19 +57,7 @@ const displayNpc = (npc) => {
 }
 
 
-
-/**
- * @param {int} x x pos of the npc on the map
- * @param {int} y y pos of the npc on the map
- * @param {int} size sze of the npc on the map
- * @param {array[int]} direction [x, y] contains the direction of the npc animated
- * @param {int} npcId string that contains npc id
- * @param {object} npc object that contains npc information
- */
 const animateNpc = (x, y, size, direction /* ! = Array ! */, npcId, npc) => {
-  /**
-   * * Switch on the npc state and show different animation
-   */
 
   switch(npc.state){
     case "idle" :

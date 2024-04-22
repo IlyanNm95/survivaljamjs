@@ -1,10 +1,3 @@
-// ************************ Player Animation
-
-/**
- * @param {float} positionX 
- * @param {float} positionY 
- * @param {int} spriteSize 
- */
 const showPlayerSprite = (positionX, positionY, spriteSize) => {
     /**
      * * Show the sprite and if he is mooving or not
@@ -22,11 +15,6 @@ const showPlayerSprite = (positionX, positionY, spriteSize) => {
 }
 
 
-
-/**
- * @param {Vector2} offsetVectorBounds automatically to x 0 y 0, but it can be modified for the collision
- * @returns {array[int]} [x, y] position of the player in the tile grid
- */
 const actualPlayerTile = (offsetVectorBounds = createVector(0, 0)) => 
 [
  Math.floor((playerVector.x + offsetVectorBounds.x - (playerSpriteSize / 2)) / tileSize * -1), 
@@ -35,10 +23,6 @@ const actualPlayerTile = (offsetVectorBounds = createVector(0, 0)) =>
 
 
 
-/**
- * @param {Vector2} offsetVectorBounds automatically to x 0 y 0, but it can be modified for the collision
- * @returns {boolean} return true if it collided to somehting or false if not
- */
 const getPlayerCollision = (offsetVectorBounds = createVector(0, 0)) => { // offsetVectorBounds is usefull in case we have different collision point on the player
 
     let actualPlayerTileWithOffsetBounds = actualPlayerTile(offsetVectorBounds)
@@ -57,14 +41,6 @@ const getPlayerCollision = (offsetVectorBounds = createVector(0, 0)) => { // off
 // With this code, if the player is out of range of the array or the value of the tile isn't defined, he won't be able to go further
 
 
-
-//#region // * Player Interaction region
-
-
-
-/**
- * @param {array[int]} playerCaseInteract [x , y]
- */
 const checkForInteraction = (playerCaseInteract) => {
     /**
      * * Check if the tile exist or if a pnj is on the tile, then create interaction popup
@@ -90,26 +66,14 @@ const checkForInteraction = (playerCaseInteract) => {
 
 
 
-/**
- * @param {array[int]} caseInteraction [x, y] the case interaction
- */
 const playerInteraction = (caseInteraction) => {
     if(interactWithATile(caseInteraction) === true) return;
     interactWithNPC(caseInteraction);
 }
 
 
-
-/**
- * @param {array} tileInteract [x, y] position of the tile interacted
- */
 const interactWithATile = (tileInteract) => {
 
-    /**
-     * * This function is the principal reason why my playerLastDirection var is an array, in that case, we can easily recover the tile
-     * * around him, so in our case we get the tileData with the function and we check if the tile is undefined or not so we can continue
-     * * the function and then, big switch for a lot of interactions
-     */
 
     let interactedTile = getTileData(tileInteract[0], tileInteract[1], actualPlayerMap.objectLayer) // get the information of the tile that the player is looking for
 
@@ -168,16 +132,8 @@ const interactWithATile = (tileInteract) => {
 }
 
 
-
-/**
- * @param {array} tileInteract [x, y] position of the tile interacted to check if a npc is on 
- */
 const interactWithNPC = (tileInteract) => {
-    /**
-     * * Filter on the array of npcOnMap on playerOnMap var that contains all npc informations
-     * * then we check if we have npc who we can interact with and if we have, we just take the
-     * * first element of the array and we interact with
-     */
+    
     let npcInteracted = getNpcOnTileInteraction(tileInteract)
     if(npcInteracted.length > 0)
     {
@@ -216,17 +172,8 @@ const launchInteractionOfNpc = (npcInteraction) => {
 }
 
 
-
-/**
- * @param {int} x 
- * @param {int} y 
- * @param {string} typeOfInteract 
- */
 const createInteractionPopup = (x ,y ,typeOfInteract) => {
-    /**
-     * * Show the differents interaction by creating image on the 2D array using the 5th parameters of the function to true,
-     * * which said that is UiImage and then load id 9 or 10 image in top of the tile interacted
-     */
+    
     switch(typeOfInteract){
         case "dialog" :
             createImageWithIdOn2dArray(x, y-1, 9, 65, true)
@@ -239,22 +186,12 @@ const createInteractionPopup = (x ,y ,typeOfInteract) => {
     } // Create pop with the option true who said this is a UI image
 }
 
-//#endregion
 
-
-
-/**
- * @returns {array[int]} [x, y] the tile next to the player
- */
 const tileNextToThePlayer = () => [actualPlayerTile()[0] + playerLastDirection[0], actualPlayerTile()[1] + playerLastDirection[1]]
 
 
 
 const playSleepAnimation = () => {
-    /**
-     * * Actually it doesn't play any animation but it's usefull to debug the playerHealth system
-     * ! Will soon be deprecated
-     * TODO : Update this function soon
-     */
+    
     playerTeam[0].health.actualHealth = playerTeam[0].health.maxHealth
 }
