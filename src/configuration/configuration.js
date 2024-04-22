@@ -28,8 +28,6 @@ let specificAnimationIndex = 0
 
 // * GLOBAL ANIMATION VAR
 
-// * GLOBAL TRANSITION VAR
-
 let actualTransitionState = null;
 let callbackWhenTransitionFinish = () => { }; // The variable that hold the arrow function to launch at the end of the transition function
 let transitionEngineIndex = 0;
