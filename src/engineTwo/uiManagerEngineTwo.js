@@ -17,7 +17,6 @@ const displayEngineTwoUI = () => {
     }
 }
 
-//#region // * Different States UI Display Region
 
 
 const displayEngineTwoStartingFightUi = () => {
@@ -101,17 +100,6 @@ const displayEngineTwoEndFightUi = () => {
 }
 
 
-//#endregion
-
-
-
-// * -----------------------------
-
-
-
-//#region // * StartGame UI Region
-
-
 const displayVersusIcon = () => {
     let width = 500;
     let height = width;
@@ -155,14 +143,6 @@ const displayStartFightButton = () => {
 
     }
 }
-
-
-//#endregion
-
-
-
-//#region // * PlayingGame UI Region
-
 
 
 const displayGameUi = () => {
@@ -258,11 +238,6 @@ const showDeadSpriteIconOnEngineTwo = (xStart, yStart, size, idSprite) => {
 }
 // Icon in ui show
 
-//#endregion
-
-
-
-//#region // * EndGame UI Region
 
 const displayEndFight = () => {
     let size = window.innerHeight/1.5;
@@ -385,8 +360,6 @@ const displayEndTurnButton = () => {
         endTurn(); eventOnTheTutorialEngine("nextTurn");
     })
 }
-
-//#region // * display abilities region
 
 const displayAbility = () => {
     setAbilityPosition();

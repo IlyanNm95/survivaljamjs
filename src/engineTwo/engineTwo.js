@@ -226,10 +226,7 @@ const showSpecificSpriteWithPositionOnTactical = (xPosition, yPosition) => {
     }
 }
 
-/**
- * @param {array[int]} position [x, y] the position of the entity who have his health showed in the world
- * @param {object} entity the entity object who contains the health, the max health... etc
- */
+
 const showHealthSpriteTactical = (position, entity) => {
 
     if(entity.health === undefined){
@@ -240,12 +237,7 @@ const showHealthSpriteTactical = (position, entity) => {
     let sizeHealth = playerSpriteSize;
     image(uiData[3].image, position[0], position[1]-playerSpriteSize, sizeHealth, sizeHealth) // Background HP
     let actualHealthPercent = health.actualHealth / health.maxHealth * 100 + 0.0001; 
-    /**
-     *  Add +0.000001 cause when it will be to 0, the image function of p5
-     *  will just set the image width to his native size and the actualHealthPercent is
-     *  used to set the width of the actual player health, i can +0.00001 it in the image function
-     *  directly or here, it will be the same, image width cannot be 0 in p5
-     */
+    
     tint(255, 35, 35)
     image(uiData[0].image, position[0], position[1]-playerSpriteSize, actualHealthPercent, sizeHealth) // Bar HP
     noTint();
@@ -303,14 +295,6 @@ const endEventFight = (event) => {
 }
 
 
-//#region // * Usefull tools functions regions
-
-
-/**
- * @param {int} x position y coord
- * @param {int} y position y coord
- * @returns {object} represents an entity on map references 
- */
 const getSpriteWithCoord = (x, y) => {
     if(getSpriteTactical(x, y) === undefined)
     {
@@ -320,26 +304,14 @@ const getSpriteWithCoord = (x, y) => {
 }
 
 
-
-/**
- * @returns {int} id of a tile on the tactical map
- */
 const getTacticalTileOnMouseClick = () => {
     return actualMapEngineTwo.tacticalMap[Math.floor((mouseY - vectorCameraEngineTwo.y) / tileSize)][Math.floor((mouseX - vectorCameraEngineTwo.x) / tileSize)];
 }
 
 
-
-/**
- * @returns {array[int]} [x, y] of the coord tile
- */
 const getCoordTileWithMouseClickEngineTwo = () => [Math.floor((mouseX - vectorCameraEngineTwo.x) / tileSize), Math.floor((mouseY - vectorCameraEngineTwo.y) / tileSize)] // Return coord on map
 
 
-
-/**
- * @returns {boolean} return if the mouse is in array or no (true false)
- */
 const mouseIsInArrayEngineTwo = () => {
     return Math.floor((mouseX - vectorCameraEngineTwo.x) / tileSize) >= 0 
     && Math.floor((mouseY - vectorCameraEngineTwo.y) / tileSize) >= 0
@@ -348,10 +320,6 @@ const mouseIsInArrayEngineTwo = () => {
 } // Return true or false
 
 
-/**
- * just reset every informations of entities on a tactical map
- * @param {object} tacticalMap a tactical tile map object
- */
 const resetEveryEntityValue = (tacticalMap) => {
     for(let i = 0; i <tacticalMap.entityOnTactical.length; i++)
     {
@@ -359,6 +327,3 @@ const resetEveryEntityValue = (tacticalMap) => {
         tacticalMap.entityOnTactical[i].pa = 2;
     }
 }
-
-
-//#endregion

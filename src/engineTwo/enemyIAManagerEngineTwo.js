@@ -3,9 +3,6 @@ function getRandomInt(max) {
 }
 
 
-/**
- * @returns {boolean} return the value of the action of the IA
- */
 const runIaTurn = () => {
 
     if(actualMapEngineTwo.entityOnTactical[whichEntityTurn].state === "dead")
@@ -19,17 +16,8 @@ const runIaTurn = () => {
     
 }
 
-
-/**
- * * Use a big switch on the different patterns of the IA
- * @param {object} entityIa the ia object
- * @returns {boolean} return the value of the action of the IA 
- */
  const runIaPattern = (entityIa) => {
-    /** 
-     * * This code will play different gameplay for differents IA patterns, nothing extremely advanced,
-     * * just a 'IA' that play differents playstyle like we can see in old retro games
-     */
+    
     switch(entityIa.pattern)
     {
         case 'normal' : 
@@ -44,21 +32,7 @@ const runIaTurn = () => {
 }
 
 
-//#region // * Different IA Pattern region
-
-
-
-/**
- * @param {object} entityIa the object Ia 
- * @param {int} chance it's the percent of chance that the entity go directly on the player 
- * @returns {boolean} return if the pattern did an action or not
- */
 const runStandardIaPattern = (entityIa, chance) => {
-    /**
-     * * Standard playstyle for an IA, sometimes IA will go on the player and sometimes not,
-     * * and when entity can attack the player, the entity attack the player, we can change the
-     * * probability of the next moove of the player by changing the change
-     */
 
     if(attackIA(entityIa) === false)
     {
@@ -68,16 +42,6 @@ const runStandardIaPattern = (entityIa, chance) => {
 }
 
 
-
-//#endregion
-
-//#region // * The moovability of the IA 
-
-/**
- * @param {object} entityIa the object Ia 
- * @param {int} chance it's the percent of chance that the entity go directly on the player 
- * @returns {boolean} return if the Ia is mooving or not
- */
 const mooveOneCaseIA = (entityIa , chance) => {
     if(entityIa.pm <= 0)
     {
@@ -115,11 +79,6 @@ const mooveOneCaseIA = (entityIa , chance) => {
     return true;
 }
 
-/**
- * @param {object} entityIa entity of the IA
- * @param {int} indexAbilityUsed integer of the ability used
- * @returns {boolean} return if the ia attacked or no
- */
 const attackIA = (entityIa, indexAbilityUsed = 0) => {
 
     let selectAbilityIa = indexAbilityUsed;
@@ -145,5 +104,3 @@ const attackIA = (entityIa, indexAbilityUsed = 0) => {
     
     
 }
-
-//#endregion

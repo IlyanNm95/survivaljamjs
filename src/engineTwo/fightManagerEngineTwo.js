@@ -153,10 +153,10 @@ const launchAttack = (entity = actualMapEngineTwo.entityOnTactical[whichEntityTu
 }
 
 const attackWithTheCurrentAbility = (entity, abilityIndex, target) => {
-    // Probabilité que la compétence se retourne contre l'utilisateur (20% dans cet exemple)
-    const backfireProbability = 0.4;
+    // Probability that the ability backfires on the user (30% in this example)
+    const backfireProbability = 0.3;
 
-    // Génération d'un nombre aléatoire entre 0 et 1
+    // Generating a random number between 0 and 1
     const randomValue = Math.random();
 
     switch(entity.abilities[abilityIndex].type) {
@@ -164,13 +164,13 @@ const attackWithTheCurrentAbility = (entity, abilityIndex, target) => {
             entity.state = "heal";
             entity.pa--;
             setTimeout(() => {
-                // Vérification si la compétence se retourne contre l'utilisateur
+                // Checking if the ability backfires on the user
                 if (randomValue <= backfireProbability) {
                     console.log("Your ability backfires!");
-                    // Appliquer des dégâts à l'utilisateur (à soi-même)
+                    // Apply damage to the user (to oneself)
                     entity.health.actualHealth -= 5; 
                 } else {
-                    // Appliquer le soin à la cible
+                    // Apply healing to the target
                     target.health.actualHealth += entity.abilities[abilityIndex].baseAmount;
                     if (target.health.actualHealth >= target.health.maxHealth) target.health.actualHealth = target.health.maxHealth;
                 }
@@ -180,19 +180,20 @@ const attackWithTheCurrentAbility = (entity, abilityIndex, target) => {
             entity.state = "fight";
             entity.pa--;
             setTimeout(() => {
-                // Vérification si la compétence se retourne contre l'utilisateur
+                // Checking if the ability backfires on the user
                 if (randomValue <= backfireProbability && target !== entity && target.id !== 0) {
                     console.log("Your ability backfires!");
-                    // Appliquer des dégâts à l'utilisateur (à soi-même)
-                    entity.health.actualHealth -= 5; // Remplacez someDamageValue par la quantité de dégâts infligés à votre propre entité
+                    // Apply damage to the user (to oneself)
+                    entity.health.actualHealth -= 5; 
                 } else {
-                    // Appliquer les dégâts à la cible
+                    // Apply damage to the target
                     target.health.actualHealth -= entity.abilities[abilityIndex].baseAmount;
                 }
             }, 450);
             break;
     }
 }
+
 
 
 const checkAllEnemiesDead = () => {

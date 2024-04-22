@@ -1,10 +1,7 @@
 
 
 const runCinematicFightView = () => {
-    /**
-     * * In this function, i just do a switch on the fightCinematicViewState using the enum FightCinematicViewStateEnum
-     * * In that case, i can see different moment in the animation and set a start animation feature.
-     */
+   
     switch(fightCinematicViewState){
         case FightCinematicViewStateEnum.NoAnim:
             return false;
@@ -17,10 +14,6 @@ const runCinematicFightView = () => {
     return true;
 }
 
-/**
- * * For every animation and cinematic for the cinematic fight view, i just have a function that display cinematic on every animation
- * * Animation is called on specific attacks
- */
 
 const runClassicCinematic = () => {
     let widthRectAnimation = window.innerWidth / 1.5, heightRectAnimation = window.innerHeight / 1.25
@@ -41,25 +34,10 @@ const runClassicCinematic = () => {
     fill(255,0,0,80)
     showMapOnAnimationSpecific(xStartRectAnimation, yStartRectAnimation, widthRectAnimation, heightRectAnimation);
 
-    /**
-     * * Boucle on every sprites the animations have to show them
-     */
-
     showEverySpriteOnAnimationSpecific(xStartRectAnimation, yStartRectAnimation, widthRectAnimation, heightRectAnimation);
 }
 
 
-
-//#region // * Display map on specific animation logics Region
-
-
-
-/**
- * @param {int} xStartRectAnimation 
- * @param {int} yStartRectAnimation 
- * @param {int} widthRectAnimation 
- * @param {int} heightRectAnimation 
- */
 const showEverySpriteOnAnimationSpecific = (xStartRectAnimation, yStartRectAnimation, widthRectAnimation, heightRectAnimation) => {
 
     for(let i =0; i < cinematicUsed.sprites.length;i++)
@@ -189,17 +167,6 @@ const addIndexToCurrentOrderAnimation = () => {
 
 
 
-//#endregion
-
-
-
-//#region // * State Animation Logics Region
-
-
-
-/**
- * @param {int} indexAnimation, this is the index of the animation started by the attack
- */
 const launchAnimationCinematicFight = (eventOnEnd = () => {},indexAnimation = 0) => {
     indexCurrentOrderOfAnimation = 0;
     cinematicUsed = JSON.parse(JSON.stringify(AnimationsList[indexAnimation]))
@@ -208,10 +175,6 @@ const launchAnimationCinematicFight = (eventOnEnd = () => {},indexAnimation = 0)
 }
 
 
-
-/**
- * * Set a little time out when there is no anim to animate, in that case the cinematic is still running
- */
 const endAnimationCinematicFight = () => {
     cinematicUsed.isStopped = true;
     setTimeout(() => {
@@ -222,12 +185,4 @@ const endAnimationCinematicFight = () => {
 }
 
 
-
-/**
- * @returns boolean if the cinematic is running, it's better for the code lisibility
- */
 const isCinematicFightIsRunning = () => fightCinematicViewState !== FightCinematicViewStateEnum.NoAnim
-
-
-
-//#endregion
