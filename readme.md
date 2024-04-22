@@ -8,5 +8,3 @@
 * 3 - Open index.html in Visual Studio Code 
 * 4 - Click on "Go Live" in the right bottom corner of the window
 * 5 - Enjoy !
-
-github : https://github.com/IlyanNm95/survivaljamjs.git
