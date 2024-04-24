@@ -1,0 +1,51 @@
+const createInputButtonWithCallback = (xStartButton, yStartButton, sizeXButton, sizeYButton, callbackFunction = errorCallbackFunctionButton) => {
+    if( mouseIsHover(xStartButton, yStartButton, sizeXButton, sizeYButton) )
+    {
+        cursor('pointer') // Changing the cursor into a pointer if pointer is in the button
+    }
+    
+    if( mouseIsHover(xStartButton, yStartButton, sizeXButton, sizeYButton) && mouseIsPressed === true )
+    {
+        canvas.mouseReleased(callbackFunction)
+    }
+}
+
+
+
+const createShowTextOnHover = (xStartButton, yStartButton, sizeXButton, sizeYButton, textToShow = "Hovered", fontSize = 16) => {
+    if( mouseIsHover(xStartButton, yStartButton, sizeXButton, sizeYButton) )
+    {
+        fill(255,255,255)
+
+        textSize(fontSize)
+        textAlign(CENTER,CENTER);
+
+        drawingContext.shadowBlur = 10;
+        drawingContext.shadowColor = 'black';
+
+        text(textToShow, mouseX, mouseY-10)
+
+        drawingContext.shadowBlur = 0;
+
+    }
+}
+
+const changeFillOnHover = (xStartButton, yStartButton, sizeXButton, sizeYButton, red = 255, green = 255, blue = 255) => {
+    if( mouseIsHover(xStartButton, yStartButton, sizeXButton, sizeYButton) )
+    {
+        /**
+         * * Just set the color on hover a button
+         */
+        fill(red,green,blue)
+    }
+}
+
+const mouseIsHover = (xStartButton, yStartButton, sizeXButton, sizeYButton) => mouseX > xStartButton && mouseY > yStartButton && mouseX < xStartButton + sizeXButton && mouseY < yStartButton + sizeYButton
+
+
+const errorCallbackFunctionButton = () => {
+    /**
+     * * Default callback when we createInputButtonWithCallback
+     */
+    throw new Error("This Button doesn't have a Function! (uiManagerEngineOne.js --> const createInputButtonWithCallback) Don't forget createInputButtonWithWallback takes 5 parameters")
+}
