@@ -23,7 +23,6 @@ const runEngineOne = () => {
 }
 
 
-//#region // * Differents Engine One State region
 
 const runCinematicStateEngineOne = () => {
   playerCanMove = false;
@@ -59,11 +58,6 @@ const runEndStateEngineOne = () => {
   showCredits();
 }
 
-//#endregion
-
-
-
-//#region // * Display game && camera region
 
 const displayTopDown2D = () => {
     createMapTopDown("not", actualPlayerMap.groundLayer); // create the layer ground in back of the player
@@ -85,26 +79,10 @@ const setPlayerCamera = (xSizeCam = windowWidth/2, yHeightCam = windowHeight/2) 
     }
 }
 
-//#endregion
 
 
-
-//#region // * Top Down Map Logic region
-
-/**
- * @param {string} orientation string can be back or front, if it's not both of them, it won't send an error and just draw every tiles
- * @param {array} mapLayer the current layer of map
- * @param {object} mapInfo contains every information of map
- * @param {array} offsetPositionOnScreen the offset position of the position for the camera of the map in the current world  
- */
 const createMapTopDown = (orientation, mapLayer, mapInfo = playerOnMap, offsetPositionOnScreen = [cameraVector.x + playerVector.x, cameraVector.y + playerVector.y]) => {
-    /**
-   * ? How it works ?
-   * * If the function is called with the parameter "back" the function just show the tile in back of the player
-   * * but if it's "front" it will show the tiles in front of the player so if i put the playerShow function
-   * * between these two functions, i will have illusion of depth (in this case, if orientation isn't set, it won't send an
-   * * error and will just draw every image)
-   */
+    
     noTint(); noStroke();
     for(let y = 0;y < mapLayer.length; y++)
     {

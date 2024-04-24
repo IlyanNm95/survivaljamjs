@@ -36,9 +36,8 @@ const createShowTextOnHover = (xStartButton, yStartButton, sizeXButton, sizeYBut
 const changeFillOnHover = (xStartButton, yStartButton, sizeXButton, sizeYButton, red = 255, green = 255, blue = 255) => {
     if( mouseIsHover(xStartButton, yStartButton, sizeXButton, sizeYButton) )
     {
-        /**
-         * * Just set the color on hover a button
-         */
+        
+        
         fill(red,green,blue)
     }
 }
@@ -49,8 +48,7 @@ const mouseIsHover = (xStartButton, yStartButton, sizeXButton, sizeYButton) => m
 
 
 const errorCallbackFunctionButton = () => {
-    /**
-     * * Default callback when we createInputButtonWithCallback
-     */
+    
+
     throw new Error("This Button doesn't have a Function! (uiManagerEngineOne.js --> const createInputButtonWithCallback) Don't forget createInputButtonWithWallback takes 5 parameters")
 }

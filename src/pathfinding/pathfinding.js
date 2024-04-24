@@ -25,7 +25,7 @@ const searchPath = (startPath, pathToFind, mapLayer) => {
         
 
         openList.splice(openList.indexOf(currentNode), 1)
-
+        
         closedList.push(currentNode)
 
         let neighbours = getNeighbourNodeArray(currentNode, pathGrid)
@@ -58,6 +58,7 @@ const searchPath = (startPath, pathToFind, mapLayer) => {
 
 }
 
+
 const calculatePathFromNode = (endNode) => {
 
     let pathArray = [] 
@@ -81,6 +82,7 @@ const calculatePathFromNode = (endNode) => {
     return pathToReturn;
 }
 
+
 const getNeighbourNodeArray = (currentNode, currentGridPathfindingNode) => {
     let neighbourList = [];
 
@@ -96,6 +98,7 @@ const getNeighbourNodeArray = (currentNode, currentGridPathfindingNode) => {
     return neighbourList;
 }
 
+
 const getNodePathArray = (mapLayer) => {
     let arrayGridNode = new Array(mapLayer.length);
     for(let y = 0; y < arrayGridNode.length; y++)
@@ -109,16 +112,13 @@ const getNodePathArray = (mapLayer) => {
     return arrayGridNode;
 }
 
+
 const getNode = (x, y, mapLayer = null) => {
     let canWalk = true;
     if(mapLayer !== null && mapLayer[y][x] !== -1)
     {
         canWalk = false; 
-        /**
-         * * In my case, the canWalk is only when a case is not equal to -1
-         * * But in the case of other game, it can be when the tileData of the tile selected has
-         * * a collider on.
-         */
+        
     }
     return {
         posOnGrid : [x, y],
@@ -130,9 +130,11 @@ const getNode = (x, y, mapLayer = null) => {
     }
 }
 
+
 const getFCostFromNodeObject = (node) => {
     return node.gCost + node.hCost
 }
+
 
 const getLowerFCostNode = (arrayNode) => {
     let lowestFCostNode = arrayNode[0]
@@ -146,6 +148,8 @@ const getLowerFCostNode = (arrayNode) => {
     return lowestFCostNode;
 }
 
+
+
 const calculateDistanceCost = (nodeFrom, nodeTo) =>
     {
         let xDistance = Math.abs(nodeFrom.posOnGrid[0] - nodeTo.posOnGrid[0]);
@@ -153,3 +157,4 @@ const calculateDistanceCost = (nodeFrom, nodeTo) =>
         let remaining = Math.abs(xDistance - yDistance);
         return Math.min(xDistance, yDistance) + MoveStraightCost * remaining;
 }
+

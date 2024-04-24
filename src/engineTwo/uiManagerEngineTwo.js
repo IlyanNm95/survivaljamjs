@@ -336,12 +336,6 @@ const exitFight = () => {
     if(fightWinner === "allies") endEventFight(actualMapEngineTwo.endEvent);
 }
 
-//#endregion
-
-
-
-// * -----------------------------
-
 
 
 const displayEndTurnButton = () => {

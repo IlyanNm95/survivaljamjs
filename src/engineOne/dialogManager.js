@@ -450,10 +450,6 @@ const setQuestState = (dialog) => {
 
 }
 
-//#endregion
-
-//#region // * Dialog UI Effect Region
-
 let backgroundTransition = 0;
 const backgroundTransitionEffect = () => {
   // Background transition

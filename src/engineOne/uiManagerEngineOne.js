@@ -34,7 +34,6 @@ const displayUserInterfaceEngineOne = () => {
 
 
 
-//#region // * Player Informations Ui region
 
 const displayPlayerInformationUI = () => {
 
@@ -55,13 +54,8 @@ const showHealthBehindRectUI = (posX, posY, size, percentOfLife, color = [255, 0
     image(uiData[2].image, posX, posY+5, size+25, size+25)
 }
 
-/**
- * @param {int} posX 
- * @param {int} posY 
- * @param {int} size 
- * @param {int} percentOfLife 
- * @param {Object} innerValue is an object that contain : { current : 50, max : 100 }
- */
+
+
 const showBarWithPercentUi = (posX, posY, size, percentOfLife, innerValue = null) => {
     image(uiData[14].image, posX, posY+5, (size)*percentOfLife, size/12)
     noTint()
@@ -76,11 +70,6 @@ const showBarWithPercentUi = (posX, posY, size, percentOfLife, innerValue = null
     }
 }
 
-//#endregion
-
-
-
-//#region // * Exploring Menu Region
 
 
 const displayExploringMenu = () => {
@@ -152,11 +141,6 @@ const exitExploringMenu = () => {
     uiEngineOneState = UiEngineOneStateEnum.Normal
 }
 
-//#endregion
-
-
-
-//#region // * Key Show Region
 
 
 

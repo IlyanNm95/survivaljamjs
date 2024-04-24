@@ -27,17 +27,11 @@ const setPlayerInActualMapEngineTwo = () => {
     actualMapEngineTwo.entityOnTactical[0].abilities = playerTeam[0].abilities
 } // Set variables of the player in the entityOnTactical array of the map, in that order, we have the position defined by the map and the health and the ability set by the playerConfig
 
-// * Global Logics
 
-/**
- * @param {EngineStateEnum} engineToLaunch this take in parameters an element of the enumeration of the EngineStateEnum, if the engine State doesn't
- * exist, the function just return an error
- */
+
+
 const launchEngine = (engineToLaunch) => {
-    /**
-     * * This is use the function launchTransitionAndSetCallbackAfter who launch the transition and when the state if the transition swap, it just call
-     * * the function passed in parameters, it's the easiest way i found to make personnalized transition with differents event
-     */
+    
     if(!verifyValueIsInEnum(EngineStateEnum, engineToLaunch))
     {
         throw new Error("EngineStateEnum doesn't have the state : " + engineToLaunch)
@@ -50,10 +44,8 @@ const launchEngine = (engineToLaunch) => {
     });
 }
 
-/**
- * @param {function} callbackFunction the function called at the end of the transition
- * @param {idOfImageTransition} idTransition the id of the image of the transition
- */
+
+
 const launchTransitionAndSetCallbackAfter = (callbackFunction) => {
     /**
      * * This function set the global variable of the transition, this don't give any problems cause we can only have one transition at the same time or
@@ -97,9 +89,6 @@ const getRandomBackGroundId = () => {
     return arrayId[getRandomInt(arrayId.length)];
 } 
 
-
-
-//#region // * Different transition states function
 
 const enterInTransition = () => {
    

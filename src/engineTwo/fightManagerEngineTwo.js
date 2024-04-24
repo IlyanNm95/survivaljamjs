@@ -26,12 +26,7 @@ const turnManager = () => {
 
 
 const checkIaTurn = () => {
-    /**
-     * * This function is called at the end of each turn, when an entity is mooving or not or whatever else*
-     * * This algorithms check if the IA still have pm for running the turn, then if the run ia turn is sending
-     * * false, that's mean that the entity can't moove and can't attack so i just decrease the pa by one and
-     * * relaunch the function and then when IA don't have pm or pa, this just end the turn
-     */
+    
     if(whichEntityTurn > 0)
     {
         if(actualMapEngineTwo.entityOnTactical[whichEntityTurn].pm > 0)
@@ -166,13 +161,25 @@ const attackWithTheCurrentAbility = (entity, abilityIndex, target) => {
             setTimeout(() => {
                 // Checking if the ability backfires on the user
                 if (randomValue <= backfireProbability) {
-                    console.log("Your ability backfires!");
-                    // Apply damage to the user (to oneself)
-                    entity.health.actualHealth -= 5; 
+                    target.health.actualHealth += entity.abilities[abilityIndex].baseAmount;
+                    if (target.health.actualHealth >= target.health.maxHealth) target.health.actualHealth = target.health.maxHealth;
                 } else {
                     // Apply healing to the target
                     target.health.actualHealth += entity.abilities[abilityIndex].baseAmount;
                     if (target.health.actualHealth >= target.health.maxHealth) target.health.actualHealth = target.health.maxHealth;
+                }
+            }, 450);
+            break;
+         case 'superAttack':
+            entity.state = "superAttack";
+            entity.pa--;
+            setTimeout(() => {
+                // Checking if the ability backfires on the user
+                if (randomValue <= backfireProbability && target !== entity && target.id !== 0) {
+                    target.health.actualHealth -= entity.abilities[abilityIndex].baseAmount;
+                } else {
+                    // Apply damage to the target
+                    target.health.actualHealth -= entity.abilities[abilityIndex].baseAmount;
                 }
             }, 450);
             break;
@@ -184,7 +191,7 @@ const attackWithTheCurrentAbility = (entity, abilityIndex, target) => {
                 if (randomValue <= backfireProbability && target !== entity && target.id !== 0) {
                     console.log("Your ability backfires!");
                     // Apply damage to the user (to oneself)
-                    entity.health.actualHealth -= 5; 
+                    entity.health.actualHealth -= 3; 
                 } else {
                     // Apply damage to the target
                     target.health.actualHealth -= entity.abilities[abilityIndex].baseAmount;
