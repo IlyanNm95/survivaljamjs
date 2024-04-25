@@ -1,8 +1,4 @@
 const createInputButtonWithCallback = (xStartButton, yStartButton, sizeXButton, sizeYButton, callbackFunction = errorCallbackFunctionButton) => { // callback function is naturally an error !
-    /**
-     * * To make it works, i use mouseReleased lied to the canvas, with that i can easily do 
-     * * a onMouseUp isntead of a onMouseDown and it takes much less codes!
-     */
     
     if( mouseIsHover(xStartButton, yStartButton, sizeXButton, sizeYButton) )
     {
@@ -16,8 +12,6 @@ const createInputButtonWithCallback = (xStartButton, yStartButton, sizeXButton, 
 }
 
 
-
-// ! This function is used nowhere and i don't think i will use it
 const createShowTextOnHover = (xStartButton, yStartButton, sizeXButton, sizeYButton, textToShow = "Hovered", fontSize = 16) => { // callback function is naturally an error !
     if( mouseIsHover(xStartButton, yStartButton, sizeXButton, sizeYButton) )
     {
